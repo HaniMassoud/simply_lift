@@ -16,7 +16,8 @@ class Link {
   // open a modal dialog based on the _share_link.html template
   def request = "* [onclick]" #> SHtml.ajaxInvoke(() => {
     (for {
-      template <- TemplateFinder.findAnyTemplate(List("_share_link"))
+      //template <- TemplateFinder.findAnyTemplate(List("_share_link"))
+      template <- Templates.apply(List("_share_link"))
     } yield ModalDialog(template)) openOr Noop
       
   })

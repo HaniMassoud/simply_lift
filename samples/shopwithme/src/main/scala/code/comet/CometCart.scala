@@ -36,7 +36,7 @@ class CometCart extends CometActor {
         WiringUI.history(cart.contents) {
           (old, nw, ns) => {
             // capture the tr part of the template
-            val theTR = ("tr ^^" #> "**")(ns)
+            val theTR = ("tr ^^" #> "**").apply(ns)
             
             def ciToId(ci: CartItem): String = ci.id + "_" + ci.qnty
 
@@ -73,7 +73,7 @@ class CometCart extends CometActor {
     // if someone sends us a new cart
     case SetNewCart(newCart) => {
       // unregister from the old cart
-      unregisterFromAllDepenencies()
+      unregisterFromAllDependencies()
 
       // remove all the dependencies for the old cart
       // from the postPageJavaScript
